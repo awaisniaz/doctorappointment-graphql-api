@@ -1,27 +1,4 @@
 "use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -59,39 +36,25 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var sequelize_1 = require("sequelize");
-var tedious = __importStar(require("tedious"));
-var config = {
-    username: 'root',
-    password: 'Awaisniaz@1234',
-    database: 'doctorappointement',
-    host: 'localhost',
-    dialect: 'mysql',
-    dialectModule: tedious,
-    define: { underscored: true },
+exports.user_resolver = void 0;
+exports.user_resolver = {
+    Query: {
+        login: function (parent, args, context) { return __awaiter(void 0, void 0, void 0, function () {
+            var _a;
+            return __generator(this, function (_b) {
+                console.log((_a = args === null || args === void 0 ? void 0 : args.input) === null || _a === void 0 ? void 0 : _a.email);
+                return [2 /*return*/, { email: "awaisniaz", username: "Awaisniaz", name: "Usman" }];
+            });
+        }); }
+    },
+    Mutation: {
+        createUser: function (parent, args, context) { return __awaiter(void 0, void 0, void 0, function () {
+            var _a;
+            return __generator(this, function (_b) {
+                console.log((_a = args === null || args === void 0 ? void 0 : args.input) === null || _a === void 0 ? void 0 : _a.email);
+                return [2 /*return*/, { email: "awaisniaz", username: "Awaisniaz", name: "Usman" }];
+            });
+        }); }
+    }
 };
-var sequelize = new sequelize_1.Sequelize(config.database, config.username, config.password, {
-    host: config.host,
-    dialect: 'mysql'
-});
-var testingConnection = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var error_1;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, sequelize.authenticate()];
-            case 1:
-                _a.sent();
-                console.log('Connection has been established successfully.');
-                return [3 /*break*/, 3];
-            case 2:
-                error_1 = _a.sent();
-                console.error('Unable to connect to the database:', error_1);
-                return [3 /*break*/, 3];
-            case 3: return [2 /*return*/];
-        }
-    });
-}); };
-testingConnection();
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=user_resolver.js.map

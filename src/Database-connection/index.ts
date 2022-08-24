@@ -3,17 +3,19 @@ import * as tedious from 'tedious';
 
 
 const config = {
-    username: 'user',
-    password: 'pass',
-    database: 'db',
-    host: 'host',
-    dialect: 'mssql',
+    username: 'root',
+    password: 'Awaisniaz@1234',
+    database: 'doctorappointement',
+    host: 'localhost',
+    dialect: 'mysql',
     dialectModule: tedious, //   <----   <---- this is the key!!
     define: { underscored: true },
-    // dialectOptions,
 };
 
-const sequelize = new Sequelize(config.database, config.username, config.password);
+const sequelize = new Sequelize(config.database, config.username, config.password, {
+    host: config.host,
+    dialect: 'mysql'
+});
 const testingConnection = async () => {
     try {
         await sequelize.authenticate();
